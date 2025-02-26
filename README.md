@@ -1,5 +1,5 @@
 # CookingAids
-
+CookingAids is a project to help students manage their meal preparation. 
 This is a project template for a greenfield Java project. It is a meal planner for students who are looking to eat more healthily and affordably. Given below are instructions on how to use it.
 
 ## Setting up in Intellij
