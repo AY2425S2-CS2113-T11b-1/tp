@@ -121,14 +121,18 @@ public class Parser {
 
     public static String[] parseDish(String receivedText) {
         String[] returnedArray = {"1", "none", "none"};
-        String[] parts = receivedText.split(" ");
 
-        if (parts.length > 0) {
-            returnedArray[1] = parts[0];
+        if (!receivedText.contains("-dish=")) {
+            return returnedArray; // If no dish flag, return default
         }
-        if (parts.length > 1) {
-            returnedArray[2] = parts[1];
-        }
+
+        int startIndex = receivedText.indexOf("-dish=") + "-dish=".length();
+        int endIndex = receivedText.indexOf(" ", startIndex); // Look for the next space
+        if (endIndex == -1) endIndex = receivedText.length(); // If no space, take the rest
+
+        String dishName = receivedText.substring(startIndex, endIndex).trim();
+        returnedArray[1] = dishName;
+
         return returnedArray;
     }
 
