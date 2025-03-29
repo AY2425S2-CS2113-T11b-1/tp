@@ -49,29 +49,39 @@ public class AddCommand {
     }
 
     public static void addRecipe(String receivedText) {
-        receivedText = removeCommandWord(receivedText);
-        String[] recipeFields = Parser.parseRecipe(receivedText);
 
-        assert recipeFields != null : "Recipe fields should not be null";
-        assert recipeFields.length == 2 : "Recipe fields should contain exactly two elements";
+        try {
+            receivedText = removeCommandWord(receivedText);
+            String[] recipeFields = Parser.parseRecipe(receivedText);
 
-        String recipeName = recipeFields[0];
-        String ingredientsString = recipeFields[1];
+            assert recipeFields != null : "Recipe fields should not be null";
+            assert recipeFields.length == 2 : "Recipe fields should contain exactly two elements";
 
-        ArrayList<String> ingredients = parseIngredients(ingredientsString);
+            String recipeName = recipeFields[0];
+            String ingredientsString = recipeFields[1];
 
-        assert recipeName != null && !recipeName.isEmpty() : "Recipe name should not be empty";
-        Recipe recipe = ingredients.isEmpty()
-                ? new Recipe( replaceSpaceWithUnderscore(recipeName))
-                : new Recipe( replaceSpaceWithUnderscore(recipeName), ingredients);
-        RecipeBank.addRecipeToRecipeBank(recipe);
+            ArrayList<String> ingredients = new ArrayList<>();
 
-        System.out.println("Added Recipe: " + recipeName);
-        if (!ingredients.isEmpty()) {
+            if (!ingredientsString.isEmpty()) {
+                String[] ingredientArray = ingredientsString.split(",");
+                for (String ingredient : ingredientArray) {
+                    ingredients.add(ingredient.trim());
+                }
+            } else {
+                throw new InvalidInputException();
+            }
+
+            assert recipeName != null && !recipeName.isEmpty() : "Recipe name should not be empty";
+            Recipe recipe = ingredients.isEmpty()
+                    ? new Recipe(replaceSpaceWithUnderscore(recipeName))
+                    : new Recipe(replaceSpaceWithUnderscore(recipeName), ingredients);
+            RecipeBank.addRecipeToRecipeBank(recipe);
+            System.out.println("Added Recipe: " + recipeName);
             System.out.println("Ingredients: " + ingredients);
-        } else {
-            System.out.println("No ingredients specified.");
+        } catch (InvalidInputException e) {
+            System.out.println("Invalid format, recipe should have at least one ingredient (use -needs=ingredientName)");
         }
+
     }
 
     private static ArrayList<String> parseIngredients(String ingredientsString) {
