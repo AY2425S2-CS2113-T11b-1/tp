@@ -115,20 +115,13 @@ add -ingredient={ingredientName} [-expiry={expiryDate}] [-qty={quantity}]
 
 Adds a recipe to the recipe bank.
 
-> **Warning:** Ingredients *must* be accompanied by quantities to be processed correctly
-
 **Format:**
 ```plaintext
-add -recipe={recipeName}  
-add -recipe={recipeName} [-needs=ingredient_1,quantity_1,ingredient_2,quantity_2]
+add -recipe={recipeName} -needs=ingredient_1,quantity_1,ingredient_2,quantity_2
 ```
 
 **Expected Output:**
-- `add -recipe={recipeName}`:
-  ```plaintext
-  Added Recipe: {recipeName}
-  Ingredients: []
-  ```
+
 - `add -recipe={recipeName} -needs=ingredient_1,quantity_1,ingredient_2,quantity_2`:
   ```plaintext
   Added Recipe: {recipeName} 
