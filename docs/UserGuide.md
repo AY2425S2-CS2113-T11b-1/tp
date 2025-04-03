@@ -15,7 +15,7 @@
   9. [View Available Recipes: `list -recipe`](#9-view-available-recipes-list--recipe)
   10. [Delete Dish from Schedule: `delete -dish`](#10-delete-dish-from-schedule-delete--dishdishname-)
   11. [Delete Ingredient: `delete -ingredient`](#11-delete-ingredient-delete--ingredientingredientname-)
-  12. [Delete Recipe from Recipe Bank: `delete -recipe`](#12-delete-recipe-from-recipe-bank-delete--reciperecipename-)
+  12. [Delete Recipe from Recipe Bank: `delete -recipe`](#12-delete-recipe-from-recipe-bank-delete--reciperecipeindex-)
   13. [Suggest Dishes: `suggest`](#13-suggest-dishes-suggest)
 - [Command List](#command-list-)
 
@@ -296,19 +296,19 @@ delete -ingredient={ingredientName}
 
 ---
 
-### **12. Delete Recipe from Recipe Bank: `delete -recipe={recipeName}`** 
+### **12. Delete Recipe from Recipe Bank: `delete -recipe={recipeIndex}`** 
 
 Deletes a recipe from the recipe bank.  
 
 **Usage:**  
 ```plaintext
-delete -recipe={recipeName}
+delete -recipe={recipeIndex}
 ```
 
 **Expected Output:**
-- `delete -recipe={recipeName}`:
+- `delete -recipe={recipeIndex}`:
   ```plaintext
-  {recipeName} has been deleted from the recipe bank!
+  {recipeIndex} has been deleted from the recipe bank!
   ```
 
 ---

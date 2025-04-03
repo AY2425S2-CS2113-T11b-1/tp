@@ -152,9 +152,14 @@ public class DeleteCommand {
      * @param receivedText The name of the recipe to be deleted.
      */
     public static void deleteRecipe(String receivedText) {
-        String recipeName = Parser.parseRecipeForDeletion(receivedText);
+        String recipeIndex = Parser.parseRecipeForDeletion(receivedText);
 
-        RecipeBank.removeRecipeFromRecipeBank(recipeName);
-        System.out.println(recipeName + " has been deleted from the recipe bank!");
+        try {
+            String recipeName = RecipeBank.removeRecipeFromRecipeBank(recipeIndex);
+            System.out.println(recipeName + " has been deleted from the recipe bank!");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Please provide a valid recipe index!");
+
+        }
     }
 }
