@@ -3,6 +3,7 @@ package seedu.cookingaids.items;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.cookingaids.config.UnitConfig;
+import seedu.cookingaids.exception.OverflowQuantityException;
 
 import java.time.LocalDate;
 
@@ -69,11 +70,10 @@ public class Ingredient extends Food {
         return name;
     }
 
-    public void addQuantity(int quantity) {
+    public void addQuantity(int quantity) throws OverflowQuantityException {
         if (quantity > Integer.MAX_VALUE - this.quantity) {
             this.quantity = Integer.MAX_VALUE;
-            System.out.println("Maximum " + this.name + " added, value will be capped at " + Integer.MAX_VALUE +
-                    " please go use them :D");
+            throw new OverflowQuantityException();
         } else {
             this.quantity += quantity;
         }

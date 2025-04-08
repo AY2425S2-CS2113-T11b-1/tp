@@ -1,0 +1,11 @@
+{
+  "recipes" : [ ],
+  "ingredients" : { },
+  "dishes" : [ {
+    "name" : "spaghetti",
+    "dishDate" : {
+      "dateString" : "2025/03/20"
+    }
+  } ],
+  "shopping" : [ ]
+}

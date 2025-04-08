@@ -1,5 +1,6 @@
 package seedu.cookingaids.collections;
 
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.ExpiryDate;
 import seedu.cookingaids.items.Ingredient;
 import seedu.cookingaids.ui.Ui;
@@ -33,7 +34,7 @@ public class IngredientStorage {
      *
      * @param newIngredient is the ingredient to be added
      */
-    public static void addToStorage(Ingredient newIngredient) {
+    public static void addToStorage(Ingredient newIngredient) throws OverflowQuantityException {
         newIngredient = ShoppingList.removeFromShoppingList(newIngredient);
         if(newIngredient == null){
             return;

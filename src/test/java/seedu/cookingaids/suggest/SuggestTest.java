@@ -8,6 +8,7 @@ import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
 import seedu.cookingaids.collections.IngredientStorage;
 import seedu.cookingaids.collections.RecipeBank;
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Ingredient;
 import seedu.cookingaids.items.Recipe;
 
@@ -27,7 +28,7 @@ class SuggestTest {
     private MockedStatic<RecipeBank> mockedRecipeBank;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws OverflowQuantityException {
         mockedIngredientStorage = mockStatic(IngredientStorage.class);
         mockedRecipeBank = mockStatic(RecipeBank.class);
 

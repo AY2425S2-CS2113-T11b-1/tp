@@ -2,6 +2,7 @@ package seedu.cookingaids.collections;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Ingredient;
 
 import java.time.LocalDate;
@@ -32,7 +33,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testAddToStorage_newIngredient() {
+    public void testAddToStorage_newIngredient() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
 
         assertTrue(IngredientStorage.contains("Sugar"));
@@ -42,7 +43,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testAddToStorage_mergeQuantity() {
+    public void testAddToStorage_mergeQuantity() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
         IngredientStorage.addToStorage(ingredient3);
 
@@ -52,7 +53,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testAddToStorage_differentExpiryDates() {
+    public void testAddToStorage_differentExpiryDates() throws OverflowQuantityException {
         Ingredient differentExpiry = new Ingredient( "Sugar", "2026-01-01", 200);
 
         IngredientStorage.addToStorage(ingredient1);
@@ -66,7 +67,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testRemoveIngredient() {
+    public void testRemoveIngredient() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
         assertTrue(IngredientStorage.contains("Sugar"));
 
@@ -81,7 +82,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testUseIngredients_partialUse() {
+    public void testUseIngredients_partialUse() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
 
         IngredientStorage.useIngredients("Sugar", 300);
@@ -92,7 +93,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testUseIngredients_fullUse() {
+    public void testUseIngredients_fullUse() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
 
         IngredientStorage.useIngredients("Sugar", 500);
@@ -101,7 +102,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testUseIngredients_moreThanAvailable() {
+    public void testUseIngredients_moreThanAvailable() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
 
         IngredientStorage.useIngredients("Sugar", 600);
@@ -110,7 +111,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testRemoveExpiredIngredients() {
+    public void testRemoveExpiredIngredients() throws OverflowQuantityException {
         IngredientStorage.addToStorage(expiredIngredient);
 
         // Triggering cleanup
@@ -120,7 +121,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testUseIngredients_handlesMultipleExpiry() {
+    public void testUseIngredients_handlesMultipleExpiry() throws OverflowQuantityException {
         Ingredient earlyExpiry = new Ingredient( "Sugar", "2025/01/01", 200);
 
         IngredientStorage.addToStorage(earlyExpiry);
@@ -136,13 +137,13 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testGetStorage_returnsCopy() {
+    public void testGetStorage_returnsCopy() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
         assertEquals(1, IngredientStorage.getStorage().size());
     }
 
     @Test
-    public void testClearStorage() {
+    public void testClearStorage() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
         IngredientStorage.clear();
 
@@ -150,7 +151,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testGetUnexpiredIngredients_multipleIngredients() {
+    public void testGetUnexpiredIngredients_multipleIngredients() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
         IngredientStorage.addToStorage(ingredient2);
         IngredientStorage.addToStorage(ingredient3);
@@ -163,7 +164,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testGetUnexpiredIngredients_onlyExpired() {
+    public void testGetUnexpiredIngredients_onlyExpired() throws OverflowQuantityException {
         IngredientStorage.addToStorage(expiredIngredient);
 
         int unexpiredButter = IngredientStorage.getUnexpiredIngredients("Butter");
@@ -179,7 +180,7 @@ public class IngredientStorageTest {
     }
 
     @Test
-    public void testGetUnexpiredIngredients_afterUsingIngredients() {
+    public void testGetUnexpiredIngredients_afterUsingIngredients() throws OverflowQuantityException {
         IngredientStorage.addToStorage(ingredient1);
         IngredientStorage.addToStorage(ingredient2);
 

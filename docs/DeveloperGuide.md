@@ -408,9 +408,8 @@ We have written some test cases for automation testing. Below are some steps to 
 1. Ensure you have the JUnit plugin installed. We will be using this to conduct our unit testing. 
 2. In IntelliJ, navigate to `src/test`. A snippet of the project structure is shown below:
 
-<img src="images/structure.png" alt="structure" width="300"/>
+![Structure.png](images/structure.png)
 
 3. Right click the "test" folder, and click on "Run all tests in tp.test", if successful, a window should appear detailing the results of the test:
 
-<img src="images/tests.png" alt="tests" width="500"/>
-
+![Tests.png](images/tests.png)

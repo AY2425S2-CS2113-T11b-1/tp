@@ -7,6 +7,7 @@ import seedu.cookingaids.collections.DishCalendar;
 import seedu.cookingaids.collections.IngredientStorage;
 import seedu.cookingaids.collections.RecipeBank;
 import seedu.cookingaids.exception.InvalidInputException;
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Dish;
 import seedu.cookingaids.items.Ingredient;
 import seedu.cookingaids.items.Recipe;
@@ -59,7 +60,7 @@ class ListCommandTest {
     }
 
     @Test
-    void execute_listIngredients_displaysIngredientList() {
+    void execute_listIngredients_displaysIngredientList() throws OverflowQuantityException {
         Ingredient tomato = new Ingredient("tomato");
         IngredientStorage.addToStorage(tomato);
 

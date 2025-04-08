@@ -11,6 +11,7 @@ import java.io.PrintStream;
 import seedu.cookingaids.collections.DishCalendar;
 import seedu.cookingaids.collections.IngredientStorage;
 import seedu.cookingaids.collections.RecipeBank;
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Dish;
 import seedu.cookingaids.items.Ingredient;
 import seedu.cookingaids.items.Recipe;
@@ -54,7 +55,7 @@ class DeleteCommandTest {
     }
 
     @Test
-    void execute_validIngredient_deletesSuccessfully() {
+    void execute_validIngredient_deletesSuccessfully() throws OverflowQuantityException {
         Ingredient tomato = new Ingredient("tomato");
         IngredientStorage.addToStorage(tomato);
         assertDeletionSuccessfulIngredient("tomato");
@@ -143,7 +144,8 @@ class DeleteCommandTest {
     }
 
     @Test
-    void execute_deleteIngredientWhenFull_returnsIngredientNotFoundMessage() throws NullPointerException{
+    void execute_deleteIngredientWhenFull_returnsIngredientNotFoundMessage() throws NullPointerException,
+            OverflowQuantityException {
         IngredientStorage.clear();  // Simulate the full storage by clearing it first.
         Ingredient ingredient = new Ingredient( "lettuce");
         IngredientStorage.addToStorage(ingredient);

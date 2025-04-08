@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.cookingaids.collections.RecipeBank;
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Recipe;
 import seedu.cookingaids.suggest.Suggest;
 import seedu.cookingaids.collections.IngredientStorage;
@@ -32,7 +33,7 @@ class SuggestCommandTest {
     }
 
     @Test
-    void execute_suggestRecipes_displaysSuggestedRecipes() {
+    void execute_suggestRecipes_displaysSuggestedRecipes() throws OverflowQuantityException {
         // Arrange: Set up real data for testing
         IngredientStorage.clear();
 
@@ -74,7 +75,7 @@ class SuggestCommandTest {
     }
 
     @Test
-    void execute_suggestRecipes_noAvailableRecipes() {
+    void execute_suggestRecipes_noAvailableRecipes() throws OverflowQuantityException {
         // Arrange: Set up with no available recipes
         IngredientStorage.clear();
 

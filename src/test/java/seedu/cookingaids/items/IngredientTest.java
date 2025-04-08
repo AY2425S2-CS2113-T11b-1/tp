@@ -1,6 +1,7 @@
 package seedu.cookingaids.items;
 
 import org.junit.jupiter.api.Test;
+import seedu.cookingaids.exception.OverflowQuantityException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,7 +27,7 @@ public class IngredientTest {
     }
 
     @Test
-    void addQuantity_positiveValue_expectIncreasedQuantity() {
+    void addQuantity_positiveValue_expectIncreasedQuantity() throws OverflowQuantityException {
         Ingredient ingredient = new Ingredient( "Eggs", 12);
         ingredient.addQuantity(8);
         assertEquals(20, ingredient.getQuantity());

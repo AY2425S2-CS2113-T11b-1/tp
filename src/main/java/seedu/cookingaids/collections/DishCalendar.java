@@ -1,5 +1,6 @@
 package seedu.cookingaids.collections;
 
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Dish;
 import seedu.cookingaids.items.DishDate;
 import seedu.cookingaids.items.Ingredient;
@@ -96,7 +97,12 @@ public class DishCalendar {
                 if (ShoppingList.contains(ingredient.getName())) {
                     ShoppingList.removeFromShoppingList(ingredient);
                 } else {
-                    IngredientStorage.addToStorage(ingredient);
+                    try {
+                        IngredientStorage.addToStorage(ingredient);
+                    } catch (OverflowQuantityException e) {
+                        System.out.println("Maximum " + ingredient.getName() + " released, " +
+                                "value will be capped at " + Integer.MAX_VALUE );
+                    }
                 }
             }
         }

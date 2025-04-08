@@ -1,6 +1,7 @@
 package seedu.cookingaids.collections;
 
 
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Ingredient;
 
 import java.util.ArrayList;
@@ -32,8 +33,15 @@ public class ShoppingList {
     public static void addToShoppingList(Ingredient ingredient) {
         for (Ingredient item : shoppingList) {
             if (item.getName().equals(ingredient.getName())) {
-                item.addQuantity(ingredient.getQuantity()); // Update quantity
-                return;
+                try {
+                    item.addQuantity(ingredient.getQuantity()); // Update quantity
+                    return;
+                } catch (OverflowQuantityException e) {
+                    System.out.println("Maximum " + ingredient.getName() + " added into sh" +
+                            "opping list, value will be capped at " + Integer.MAX_VALUE +
+                            " stop trying to break my program!:<");
+                    return;
+                }
             }
         }
 

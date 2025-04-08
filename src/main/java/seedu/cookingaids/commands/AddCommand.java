@@ -16,6 +16,7 @@ import seedu.cookingaids.collections.IngredientStorage;
 import seedu.cookingaids.collections.RecipeBank;
 import seedu.cookingaids.collections.ShoppingList;
 import seedu.cookingaids.exception.InvalidInputException;
+import seedu.cookingaids.exception.OverflowQuantityException;
 import seedu.cookingaids.items.Dish;
 import seedu.cookingaids.items.Ingredient;
 import seedu.cookingaids.items.Recipe;
@@ -243,8 +244,14 @@ public class AddCommand {
             }
             assert quantity > 0 : "Quantity should be greater than zero";
             Ingredient ingredient = new Ingredient(ingredientName, expiryDate, quantity);
-            IngredientStorage.addToStorage(ingredient);
-            System.out.println("Added Ingredient: " + ingredient);
+            try {
+                IngredientStorage.addToStorage(ingredient);
+                System.out.println("Added Ingredient: " + ingredient);
+            } catch (OverflowQuantityException e) {
+                System.out.println("Maximum " + ingredient.getName() + " added, value will be capped at "
+                        + Integer.MAX_VALUE +
+                        " please go use them :D");
+            }
 
 
             LOGGER.info("saving to file now:");

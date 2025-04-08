@@ -86,7 +86,7 @@ Given below are my contributions to the project.
 ### **Calendar Printer**
 - **What it does**: Prints the entire meal calendar in a structured format.
 - **Justification**: Useful for users who prefer a visual overview of their cooking schedule.
-- **Highlights**: Designed to display any month of year within a range. Adjusted to calculate leap years.
+- **Highlights**: Designed to display any month of year within a range. Adjusted to calculate leap years. Challenging feature because I wanted to do it without external libraries
 - **Credits**: Inspired by terminal-based calendar printouts but implemented without third-party libraries to reduce dependencies.
 ![viewMonth.png](../images/view_month.png)
 
@@ -129,7 +129,7 @@ Given below are my contributions to the project.
 - Reported bugs and improvement suggestions to other teams: [[CS2113-W11-3] Travel Diary
   #52](https://github.com/nus-cs2113-AY2425S2/tp/pull/52/files/6d04833aec4dd84f3122d08c8c7e6f2a6c713634), [[CS2113-W13-1]/tp#175](https://github.com/Roycecodes/ped/issues)
 
-- Also gave suggestions and ideated with teammates to improve these two features. [suggestions with missing ingredients](../UserGuide.md/#15-suggest-dishes-suggest), [favourite recipe](../UserGuide.md/#16-search-recipes-by-tag-search--recipetags)
+- Also gave suggestions and ideated with teammates to improve these two features. [suggestions with missing ingredients](../UserGuide.md/#16-suggest-dishes-suggest), [favourite recipe](../UserGuide.md/#17-search-recipes-by-tag-search--recipetags)
 - example of suggestion to team 11-3
   ![royce_suggestion.png](../images/royce_suggestion.png)
 - an example of one of the suggestions I made to team 13-1

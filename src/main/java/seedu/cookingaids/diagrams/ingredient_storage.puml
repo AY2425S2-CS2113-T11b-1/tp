@@ -63,7 +63,7 @@ class IngredientStorage {
 ExpiryDate --|> DishDate
 Ingredient --|> Food
 Ingredient *--> "1" ExpiryDate
-IngredientStorage "1" --> "*" Ingredient : works on
+IngredientStorage "1" -> "*" Ingredient : works on
 
 
 @enduml
