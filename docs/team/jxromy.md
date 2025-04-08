@@ -94,10 +94,12 @@ I developed comprehensive JUnit tests to ensure the correctness and robustness o
 
 #### Discussion with Teammate:
 ![Contribution_5](images/jeromy_other_contributions_5.png)
-#### Implementation:
+
+---
+#### Implementation of Solution:
 ![Contribution_3](images/jeromy_other_contributions_3.png)
 ![Contribution_4](images/jeromy_other_contributions_4.png)
-
+---
 
   - Improved code modularity and adherence to CS2113 code quality guidelines by providing tips to teammates for following our course coding standards in their code and documentation.
   - Simplified conditional logic in command execution by refactoring nested `if` statements into guard clauses
@@ -106,6 +108,7 @@ I developed comprehensive JUnit tests to ensure the correctness and robustness o
 
   - Added inline documentation for public methods.
 
+---
 ### **Contributions Beyond the Project Team**
 
 - Reported 5+ bugs in other team's application during mock PE.
@@ -114,3 +117,4 @@ I developed comprehensive JUnit tests to ensure the correctness and robustness o
 ![Contribution_1](images/jeromy_other_contributions_1.png)
 #### Response from member of other group:
 ![Contribution_1](images/jeromy_other_contributions_2.png)
+---
